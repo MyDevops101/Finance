@@ -1,6 +1,6 @@
-# Quiver Quantitative
+# Eagle Quantitative
 
-Quiver Quantitative is a production-oriented quantitative research and investment intelligence platform built with Next.js 15, React, TypeScript, TailwindCSS, Recharts, Framer Motion, NextAuth.js, Prisma, and PostgreSQL.
+Eagle Quantitative is a production-oriented quantitative research and investment intelligence platform built with Next.js 15, React, TypeScript, TailwindCSS, Recharts, Framer Motion, NextAuth.js, Prisma, and PostgreSQL.
 
 The app is designed for investors, traders, analysts, and researchers who need a unified view of public market data, alternative data, macro events, news sentiment, portfolios, and quant research workflows.
 
