@@ -1,7 +1,7 @@
-import { ImageResponse } from "next/og";
+﻿import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Quiver Quantitative market intelligence dashboard";
+export const alt = "Eagle Quantitative market intelligence dashboard";
 export const size = {
   width: 1200,
   height: 630
@@ -25,7 +25,7 @@ export default function Image() {
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ fontSize: 30, fontWeight: 800 }}>Quiver Quantitative</div>
+          <div style={{ fontSize: 30, fontWeight: 800 }}>Eagle Quantitative</div>
           <div style={{ color: "#00D4FF", fontSize: 22 }}>Alternative Data Intelligence</div>
         </div>
         <div>
@@ -59,3 +59,4 @@ export default function Image() {
     size
   );
 }
+

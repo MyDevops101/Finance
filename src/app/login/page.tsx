@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { Metadata } from "next";
 import { Github, KeyRound } from "lucide-react";
 
@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Sign In",
-  description: "Sign in to Quiver Quantitative."
+  description: "Sign in to Eagle Quantitative."
 };
 
 export default function LoginPage() {
@@ -18,7 +18,7 @@ export default function LoginPage() {
       <main className="mx-auto flex max-w-lg px-4 py-16 sm:px-6">
         <Card className="w-full">
           <CardHeader>
-            <CardTitle>Sign in to Quiver Quantitative</CardTitle>
+            <CardTitle>Sign in to Eagle Quantitative</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Button asChild className="w-full">
@@ -42,3 +42,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

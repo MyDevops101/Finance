@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Mail, MessageSquare, Send } from "lucide-react";
 
 import { MarketingFooter } from "@/components/marketing/marketing-footer";
@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact the Quiver Quantitative team."
+  description: "Contact the Eagle Quantitative team."
 };
 
 export default function ContactPage() {
@@ -27,7 +27,7 @@ export default function ContactPage() {
           <div className="mt-8 space-y-3">
             <div className="flex items-center gap-3 text-sm text-slate-300">
               <Mail className="h-5 w-5 text-primary" aria-hidden="true" />
-              research@quiverquantitative.example
+              research@Eaglequantitative.example
             </div>
             <div className="flex items-center gap-3 text-sm text-slate-300">
               <MessageSquare className="h-5 w-5 text-primary" aria-hidden="true" />
@@ -61,3 +61,4 @@ export default function ContactPage() {
     </div>
   );
 }
+

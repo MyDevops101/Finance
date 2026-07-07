@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState, useTransition } from "react";
 import { Download, Save, Search } from "lucide-react";
@@ -58,7 +58,7 @@ export function StockScreener({ stocks }: { stocks: Equity[] }) {
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = "quiver-screen.csv";
+    anchor.download = "Eagle-screen.csv";
     anchor.click();
     URL.revokeObjectURL(url);
   }
@@ -210,3 +210,4 @@ export function StockScreener({ stocks }: { stocks: Equity[] }) {
     </div>
   );
 }
+

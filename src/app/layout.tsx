@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+﻿import type { Metadata, Viewport } from "next";
 
 import "@/app/globals.css";
 
@@ -7,8 +7,8 @@ const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: {
-    default: "Quiver Quantitative | Alternative Data Investment Intelligence",
-    template: "%s | Quiver Quantitative"
+    default: "Eagle Quantitative | Alternative Data Investment Intelligence",
+    template: "%s | Eagle Quantitative"
   },
   description:
     "Alternative data, quantitative research, insider trading, congressional trading, market intelligence, and AI-powered investment signals.",
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     "stock market intelligence",
     "quantitative research"
   ],
-  authors: [{ name: "Quiver Quantitative" }],
-  creator: "Quiver Quantitative",
+  authors: [{ name: "Eagle Quantitative" }],
+  creator: "Eagle Quantitative",
   openGraph: {
     type: "website",
     url: appUrl,
-    siteName: "Quiver Quantitative",
-    title: "Quiver Quantitative",
+    siteName: "Eagle Quantitative",
+    title: "Eagle Quantitative",
     description:
       "Institutional-grade market intelligence using public filings, macro data, sentiment, portfolio analytics, and quant models.",
     images: [
@@ -34,13 +34,13 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Quiver Quantitative market intelligence dashboard"
+        alt: "Eagle Quantitative market intelligence dashboard"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Quiver Quantitative",
+    title: "Eagle Quantitative",
     description:
       "Alternative data meets quantitative intelligence for investors, traders, and researchers.",
     images: ["/opengraph-image"]
@@ -61,3 +61,4 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
+

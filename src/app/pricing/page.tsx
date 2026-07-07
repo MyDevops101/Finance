@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { Metadata } from "next";
 import { Check, Rocket } from "lucide-react";
 
@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "Pricing for Quiver Quantitative investment intelligence."
+  description: "Pricing for Eagle Quantitative investment intelligence."
 };
 
 const tiers = [
@@ -70,3 +70,4 @@ export default function PricingPage() {
     </div>
   );
 }
+

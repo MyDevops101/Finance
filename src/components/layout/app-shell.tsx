@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import {
   BarChart3,
   Bot,
@@ -43,7 +43,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <BarChart3 className="h-5 w-5" aria-hidden="true" />
           </div>
           <div>
-            <div className="text-sm font-bold">Quiver</div>
+            <div className="text-sm font-bold">Eagle</div>
             <div className="text-xs text-muted">Quantitative</div>
           </div>
         </Link>
@@ -68,7 +68,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <div className="flex min-h-16 items-center justify-between gap-4 px-4 sm:px-6">
             <Link href="/" className="flex items-center gap-2 lg:hidden">
               <BarChart3 className="h-5 w-5 text-primary" aria-hidden="true" />
-              <span className="text-sm font-bold">Quiver</span>
+              <span className="text-sm font-bold">Eagle</span>
             </Link>
             <div className="hidden flex-1 md:block">
               <MarketTicker compact />
@@ -88,3 +88,4 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+

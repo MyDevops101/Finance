@@ -1,4 +1,4 @@
-# Deployment Instructions
+﻿# Deployment Instructions
 
 ## 1. Provision Infrastructure
 
@@ -14,7 +14,7 @@ Copy `.env.example` to `.env` for local development and configure the same keys 
 ```bash
 NEXT_PUBLIC_APP_URL=https://your-domain.example
 AUTH_SECRET=replace-with-a-strong-secret
-DATABASE_URL=postgresql://USER:PASSWORD@HOST:5432/quiver_quantitative?schema=public
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:5432/Eagle_quantitative?schema=public
 AUTH_GOOGLE_ID=...
 AUTH_GOOGLE_SECRET=...
 AUTH_GITHUB_ID=...
@@ -81,3 +81,4 @@ Recommended Vercel settings:
 - Cache news endpoints for at least 900 seconds.
 - Use `ApiCache` for SEC filings, congressional disclosures, and fundamentals.
 - Add ingestion jobs for SEC EDGAR and House/Senate disclosure data before scaling to large user bases.
+

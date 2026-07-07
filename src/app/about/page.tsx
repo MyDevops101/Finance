@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Database, LineChart, ShieldCheck } from "lucide-react";
 
 import { MarketingFooter } from "@/components/marketing/marketing-footer";
@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "About Quiver Quantitative and its mission to democratize institutional market intelligence."
+  description: "About Eagle Quantitative and its mission to democratize institutional market intelligence."
 };
 
 export default function AboutPage() {
@@ -19,7 +19,7 @@ export default function AboutPage() {
         <Badge variant="accent">About</Badge>
         <h1 className="mt-5 max-w-3xl text-4xl font-bold text-white">Institutional market intelligence, built from public data.</h1>
         <p className="mt-5 max-w-3xl leading-7 text-muted">
-          Quiver Quantitative brings filings, macro data, sentiment, portfolio analytics, and quantitative research into a single product surface for investors, traders, analysts, and researchers.
+          Eagle Quantitative brings filings, macro data, sentiment, portfolio analytics, and quantitative research into a single product surface for investors, traders, analysts, and researchers.
         </p>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           <Card>
@@ -49,3 +49,4 @@ export default function AboutPage() {
     </div>
   );
 }
+

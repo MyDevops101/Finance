@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { ArrowRight, BarChart3, BrainCircuit, Database, Landmark, ShieldCheck, UserRoundSearch } from "lucide-react";
 
 import { BacktestChart } from "@/components/charts/backtest-chart";
@@ -48,7 +48,7 @@ export default function HomePage() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Quiver Quantitative",
+    name: "Eagle Quantitative",
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web",
     offers: {
@@ -109,7 +109,7 @@ export default function HomePage() {
               <Badge>Product showcase</Badge>
               <h2 className="mt-4 text-3xl font-bold text-white">One research cockpit for public and alternative data.</h2>
               <p className="mt-4 leading-7 text-muted">
-                Quiver brings screening, filings intelligence, macro calendars, sentiment, portfolios, and backtesting into a single analyst workflow.
+                Eagle brings screening, filings intelligence, macro calendars, sentiment, portfolios, and backtesting into a single analyst workflow.
               </p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {productModules.slice(0, 4).map((module) => {
@@ -204,3 +204,4 @@ export default function HomePage() {
     </div>
   );
 }
+

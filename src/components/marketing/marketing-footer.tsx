@@ -1,11 +1,11 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 export function MarketingFooter() {
   return (
     <footer className="border-t border-border bg-[#080C14]">
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 text-sm text-muted sm:px-6 md:grid-cols-4">
         <div>
-          <div className="font-semibold text-white">Quiver Quantitative</div>
+          <div className="font-semibold text-white">Eagle Quantitative</div>
           <p className="mt-2 leading-6">Alternative data and quantitative intelligence for public market research.</p>
         </div>
         <Link href="/about" className="hover:text-white">About</Link>
@@ -15,3 +15,4 @@ export function MarketingFooter() {
     </footer>
   );
 }
+

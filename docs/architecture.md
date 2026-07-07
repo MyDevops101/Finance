@@ -1,8 +1,8 @@
-# Quiver Quantitative Architecture
+﻿# Eagle Quantitative Architecture
 
 ## Product Architecture
 
-Quiver Quantitative is organized as a Next.js 15 App Router application with server-rendered product pages, client-side analytical workspaces, API routes, NextAuth.js authentication, Prisma ORM, and PostgreSQL persistence.
+Eagle Quantitative is organized as a Next.js 15 App Router application with server-rendered product pages, client-side analytical workspaces, API routes, NextAuth.js authentication, Prisma ORM, and PostgreSQL persistence.
 
 ## Folder Structure
 
@@ -116,3 +116,4 @@ flowchart LR
 - Keep portfolio and research mutations behind authenticated server actions.
 - Add row-level ownership checks to every user-owned write.
 - For institutional tenants, add organization, role, and audit-log models.
+

@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { BarChart3, LogIn } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ export function MarketingHeader() {
             <BarChart3 className="h-5 w-5" aria-hidden="true" />
           </div>
           <div>
-            <div className="text-sm font-bold text-white">Quiver</div>
+            <div className="text-sm font-bold text-white">Eagle</div>
             <div className="text-xs text-muted">Quantitative</div>
           </div>
         </Link>
@@ -37,3 +37,4 @@ export function MarketingHeader() {
     </header>
   );
 }
+

@@ -1,4 +1,4 @@
-import type {
+﻿import type {
   AiInsight,
   BacktestMetrics,
   BacktestPoint,
@@ -602,7 +602,7 @@ export const performanceStats = [
 export const testimonials = [
   {
     quote:
-      "The best thing about Quiver is that it compresses alternative data into something our analysts can actually act on.",
+      "The best thing about Eagle is that it compresses alternative data into something our analysts can actually act on.",
     name: "Evelyn Carter",
     role: "Portfolio Manager"
   },
@@ -671,3 +671,4 @@ export const congressionalFlowSeries: TimeSeriesPoint[] = [
   { date: "Jun", value: 48, secondary: 21 },
   { date: "Jul", value: 54, secondary: 18 }
 ];
+

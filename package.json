@@ -1,5 +1,5 @@
-{
-  "name": "quiver-quantitative",
+﻿{
+  "name": "Eagle-quantitative",
   "version": "0.1.0",
   "private": true,
   "description": "Institutional-grade quantitative research and investment intelligence platform built with Next.js.",
@@ -59,3 +59,4 @@
     "node": ">=20.18.0"
   }
 }
+
