@@ -12,7 +12,7 @@ export function MiniSparkline({ data, positive = true }: { data: number[]; posit
           type="monotone"
           dataKey="value"
           dot={false}
-          stroke={positive ? "#22C55E" : "#EF4444"}
+          stroke={positive ? "#2ED47A" : "#FF433D"}
           strokeWidth={2}
           isAnimationActive
         />

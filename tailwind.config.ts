@@ -12,21 +12,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0B0F19",
-        foreground: "#F8FAFC",
-        card: "#121826",
-        primary: "#00D4FF",
-        success: "#22C55E",
-        danger: "#EF4444",
-        accent: "#8B5CF6",
-        border: "rgba(148, 163, 184, 0.18)",
-        muted: "#94A3B8"
+        background: "#000000",
+        foreground: "#E4E4E7",
+        card: "#0A0C0F",
+        primary: "#FF8A00",
+        success: "#2ED47A",
+        danger: "#FF433D",
+        accent: "#3B9EFF",
+        amber: "#FF8A00",
+        border: "rgba(255, 255, 255, 0.12)",
+        muted: "#8A8F98",
+        "fn-red": "#E5493A",
+        "fn-green": "#37B24D",
+        "fn-blue": "#2F72E5"
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "Inter", "ui-sans-serif", "system-ui"]
+        sans: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"]
+      },
+      borderRadius: {
+        DEFAULT: "2px",
+        sm: "1px",
+        md: "2px",
+        lg: "2px",
+        xl: "3px",
+        "2xl": "4px"
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(0, 212, 255, 0.18), 0 24px 80px rgba(0, 0, 0, 0.34)"
+        glow: "0 0 0 1px rgba(255, 138, 0, 0.16), 0 18px 60px rgba(0, 0, 0, 0.55)"
       },
       keyframes: {
         ticker: {
@@ -36,11 +49,16 @@ const config: Config = {
         pulseLine: {
           "0%, 100%": { opacity: "0.45" },
           "50%": { opacity: "1" }
+        },
+        blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.15" }
         }
       },
       animation: {
         ticker: "ticker 34s linear infinite",
-        pulseLine: "pulseLine 2.4s ease-in-out infinite"
+        pulseLine: "pulseLine 2.4s ease-in-out infinite",
+        blink: "blink 1.4s step-end infinite"
       }
     }
   },

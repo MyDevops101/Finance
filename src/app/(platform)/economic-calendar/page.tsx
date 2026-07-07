@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { EarningsCalendar } from "@/components/features/earnings-calendar";
 import { SectionHeading } from "@/components/market/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -58,6 +59,18 @@ export default async function EconomicCalendarPage() {
           </Table>
         </CardContent>
       </Card>
+
+      <div className="mt-5">
+        <Card>
+          <CardHeader>
+            <CardTitle>Earnings Calendar</CardTitle>
+            <span className="text-[10px] uppercase tracking-wider text-muted">Finnhub · next 14 days</span>
+          </CardHeader>
+          <CardContent className="p-0">
+            <EarningsCalendar />
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

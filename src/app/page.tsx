@@ -170,7 +170,7 @@ export default function HomePage() {
               {testimonials.map((testimonial) => (
                 <Card key={testimonial.name}>
                   <CardContent className="p-5">
-                    <p className="leading-7 text-slate-300">"{testimonial.quote}"</p>
+                    <p className="leading-7 text-slate-300">&ldquo;{testimonial.quote}&rdquo;</p>
                     <div className="mt-5">
                       <div className="font-semibold text-white">{testimonial.name}</div>
                       <div className="text-sm text-muted">{testimonial.role}</div>

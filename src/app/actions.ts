@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
+import { Prisma } from "@prisma/client";
+
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -35,7 +37,7 @@ export async function saveScreenAction(input: unknown) {
     data: {
       userId: session.user.id,
       name: parsed.data.name,
-      filters: parsed.data.filters
+      filters: parsed.data.filters as Prisma.InputJsonValue
     }
   });
 
@@ -60,9 +62,9 @@ export async function saveResearchRunAction(input: unknown) {
       name: parsed.data.name,
       strategy: parsed.data.strategy,
       universe: parsed.data.universe,
-      parameters: parsed.data.parameters,
-      metrics: parsed.data.metrics,
-      equityCurve: parsed.data.equityCurve
+      parameters: parsed.data.parameters as Prisma.InputJsonValue,
+      metrics: parsed.data.metrics as Prisma.InputJsonValue,
+      equityCurve: parsed.data.equityCurve as Prisma.InputJsonValue[]
     }
   });
 

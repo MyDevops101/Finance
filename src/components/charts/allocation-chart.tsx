@@ -2,7 +2,7 @@
 
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
-const COLORS = ["#00D4FF", "#22C55E", "#8B5CF6", "#F59E0B", "#EF4444", "#38BDF8"];
+const COLORS = ["#FF8A00", "#2ED47A", "#3B9EFF", "#FFC24B", "#FF433D", "#9A6BFF"];
 
 export function AllocationChart({ data }: { data: Array<{ sector: string; weight: number; value: number }> }) {
   return (
@@ -15,10 +15,11 @@ export function AllocationChart({ data }: { data: Array<{ sector: string; weight
         </Pie>
         <Tooltip
           contentStyle={{
-            background: "#0B0F19",
-            border: "1px solid rgba(148, 163, 184, 0.2)",
-            borderRadius: 8,
-            color: "#F8FAFC"
+            background: "#05070a",
+            border: "1px solid rgba(255, 138, 0, 0.4)",
+            borderRadius: 2,
+            color: "#E4E4E7",
+            fontFamily: "var(--font-mono)"
           }}
           formatter={(value: unknown) => [`${Number(value).toFixed(1)}%`, "Weight"]}
         />

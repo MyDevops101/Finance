@@ -1,34 +1,38 @@
 import type { Metadata } from "next";
 
+import { ChartingTerminal } from "@/components/features/charting-terminal";
 import { SectorHeatmap } from "@/components/charts/sector-heatmap";
 import { TimeSeriesChart } from "@/components/charts/time-series-chart";
 import { SectionHeading } from "@/components/market/section-heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { macroSeries, marketIndices, sectorReturns } from "@/lib/mock-data";
+import { getMacroChart, getMarketOverview } from "@/lib/api-clients";
+import { sectorReturns } from "@/lib/mock-data";
 import { formatCurrency, formatPercent, getChangeClass } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Market Overview",
-  description: "Global market overview with breadth, sector rotation, volatility, crypto, and macro signals."
+  description: "Global market overview with candlestick charts, technical indicators, breadth, sector rotation, and macro signals."
 };
 
-export default function MarketPage() {
+export default async function MarketPage() {
+  const [indices, macro] = await Promise.all([getMarketOverview(), getMacroChart()]);
+
   return (
     <div>
       <SectionHeading
         eyebrow="Market overview"
         title="Cross-Asset Signal Board"
-        description="Monitor equity indices, volatility, crypto, sector rotation, and macro trends in one view."
+        description="Live index quotes, candlestick charts with technical indicators, sector rotation, and macro trends."
       />
       <div className="grid gap-3 md:grid-cols-3">
-        {marketIndices.slice(0, 6).map((index) => (
+        {indices.slice(0, 6).map((index) => (
           <Card key={index.symbol}>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-muted">{index.name}</p>
-                  <p className="mt-1 text-xl font-bold">{formatCurrency(index.price, index.price > 1000 ? 0 : 2)}</p>
+                  <p className="mt-1 text-xl font-bold tabular-nums">{formatCurrency(index.price, index.price > 1000 ? 0 : 2)}</p>
                 </div>
                 <Badge variant={index.changePct >= 0 ? "success" : "danger"}>{formatPercent(index.changePct)}</Badge>
               </div>
@@ -47,6 +51,17 @@ export default function MarketPage() {
         ))}
       </div>
 
+      <div className="mt-5">
+        <Card>
+          <CardHeader>
+            <CardTitle>Charting Terminal · Candles + Indicators</CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <ChartingTerminal initialSymbol="AAPL" />
+          </CardContent>
+        </Card>
+      </div>
+
       <div className="mt-5 grid gap-5 xl:grid-cols-[1fr_1fr]">
         <Card>
           <CardHeader>
@@ -62,7 +77,7 @@ export default function MarketPage() {
           </CardHeader>
           <CardContent>
             <div className="h-96">
-              <TimeSeriesChart data={macroSeries} primaryLabel="10Y yield" secondaryLabel="Core CPI" />
+              <TimeSeriesChart data={macro} primaryLabel="10Y yield" secondaryLabel="Core CPI" />
             </div>
           </CardContent>
         </Card>

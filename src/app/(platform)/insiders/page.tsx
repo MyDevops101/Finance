@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 
 import { TimeSeriesChart } from "@/components/charts/time-series-chart";
+import { SecFilings } from "@/components/features/sec-filings";
 import { SectionHeading } from "@/components/market/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { getInsiderTrades } from "@/lib/api-clients";
+import { getInsiderFilings, getInsiderTrades } from "@/lib/api-clients";
 import { congressionalFlowSeries } from "@/lib/mock-data";
 import { formatCompact, formatCurrency } from "@/lib/utils";
 
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default async function InsidersPage() {
-  const trades = await getInsiderTrades();
+  const [trades, liveFilings] = await Promise.all([getInsiderTrades(), getInsiderFilings()]);
   const buyValue = trades.filter((trade) => trade.side === "Buy").reduce((sum, trade) => sum + trade.value, 0);
   const sellValue = trades.filter((trade) => trade.side === "Sell").reduce((sum, trade) => sum + trade.value, 0);
 
@@ -81,6 +82,18 @@ export default async function InsidersPage() {
                 </TableBody>
               </Table>
             </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="mt-5">
+        <Card>
+          <CardHeader>
+            <CardTitle>Live SEC Form 3/4/5 Filings · EDGAR</CardTitle>
+            <span className="text-[10px] uppercase tracking-wider text-muted">Keyless — data.sec.gov</span>
+          </CardHeader>
+          <CardContent className="p-0">
+            <SecFilings filings={liveFilings} />
           </CardContent>
         </Card>
       </div>
