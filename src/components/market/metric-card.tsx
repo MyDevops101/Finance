@@ -10,26 +10,29 @@ export function MetricCard({ index }: { index: MarketIndex }) {
   const Icon = positive ? ArrowUpRight : ArrowDownRight;
 
   return (
-    <Card>
-      <CardContent className="p-4">
+    <Card className={cn("border-l-2", positive ? "border-l-success" : "border-l-danger")}>
+      <CardContent className="p-3">
         <div className="flex items-start justify-between gap-3">
-          <div>
-            <p className="text-xs text-muted">{index.name}</p>
-            <p className="mt-1 text-xl font-semibold">
-              {formatCurrency(index.price, index.price > 1000 ? 0 : 2)}
+          <div className="min-w-0">
+            <p className="truncate text-[11px] font-bold uppercase tracking-[0.12em] text-primary">
+              {index.symbol}
             </p>
+            <p className="truncate text-[10px] uppercase tracking-wider text-muted">{index.name}</p>
           </div>
-          <div className={cn("flex items-center gap-1 rounded-md px-2 py-1 text-xs font-semibold", positive ? "bg-success/10 text-success" : "bg-danger/10 text-danger")}>
-            <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+          <div className={cn("flex items-center gap-1 rounded-sm px-1.5 py-0.5 text-[11px] font-bold", positive ? "bg-success/15 text-success" : "bg-danger/15 text-danger")}>
+            <Icon className="h-3 w-3" aria-hidden="true" />
             {formatPercent(index.changePct)}
           </div>
         </div>
-        <div className="mt-4 h-12">
+        <p className={cn("mt-2 text-2xl font-bold tabular-nums", getChangeClass(index.changePct))}>
+          {formatCurrency(index.price, index.price > 1000 ? 0 : 2)}
+        </p>
+        <div className="mt-2 h-10">
           <MiniSparkline data={index.sparkline} positive={positive} />
         </div>
-        <div className="mt-3 flex items-center justify-between text-xs text-muted">
+        <div className="mt-2 flex items-center justify-between border-t border-border pt-1.5 text-[10px] uppercase tracking-wider text-muted">
           <span>Breadth {index.breadth ?? "--"}%</span>
-          <span className={getChangeClass(index.changePct)}>{formatPercent(index.changePct)}</span>
+          <span className={cn("term-blink", positive ? "text-success" : "text-danger")}>● live</span>
         </div>
       </CardContent>
     </Card>

@@ -2,30 +2,56 @@ import type { Metadata } from "next";
 
 import { SectorHeatmap } from "@/components/charts/sector-heatmap";
 import { TimeSeriesChart } from "@/components/charts/time-series-chart";
+import { DataFeedStatus } from "@/components/features/data-feed-status";
+import { FxBoard } from "@/components/features/fx-board";
+import { LiveWatchlist } from "@/components/features/live-watchlist";
 import { MetricCard } from "@/components/market/metric-card";
 import { SectionHeading } from "@/components/market/section-heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { macroSeries, marketIndices, newsItems, sectorReturns } from "@/lib/mock-data";
+import { getMacroChart, getMarketOverview, getNews } from "@/lib/api-clients";
+import { sectorReturns } from "@/lib/mock-data";
 import { formatPercent, getChangeClass } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Dashboard",
-  description: "Real-time market widgets, breadth, heatmaps, macro trends, and institutional market intelligence."
+  description: "Live market widgets, watchlist, FX, breadth, heatmaps, macro trends, and data-feed status."
 };
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const [indices, macro, news] = await Promise.all([getMarketOverview(), getMacroChart(), getNews()]);
+
   return (
     <div>
       <SectionHeading
         eyebrow="Command center"
         title="Dashboard"
-        description="Real-time widgets for major indices, crypto, volatility, breadth, heatmaps, news, and macro risk."
+        description="Live quotes, watchlist, FX board, crypto, breadth, heatmaps, news, and macro risk."
       />
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-        {marketIndices.map((index) => (
+        {indices.map((index) => (
           <MetricCard key={index.symbol} index={index} />
         ))}
+      </div>
+
+      <div className="mt-5 grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
+        <Card>
+          <CardHeader>
+            <CardTitle>Live Watchlist</CardTitle>
+            <span className="text-[10px] uppercase tracking-wider text-muted">Auto-refresh 20s</span>
+          </CardHeader>
+          <CardContent className="p-0">
+            <LiveWatchlist />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>FX Board · Live</CardTitle>
+          </CardHeader>
+          <CardContent className="p-3">
+            <FxBoard />
+          </CardContent>
+        </Card>
       </div>
 
       <div className="mt-5 grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
@@ -43,7 +69,7 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="h-80">
-              <TimeSeriesChart data={macroSeries} primaryLabel="10Y yield" secondaryLabel="Core CPI" />
+              <TimeSeriesChart data={macro} primaryLabel="10Y yield" secondaryLabel="Core CPI" />
             </div>
           </CardContent>
         </Card>
@@ -55,7 +81,7 @@ export default function DashboardPage() {
             <CardTitle>Market Breadth</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {marketIndices.slice(0, 4).map((index) => (
+            {indices.slice(0, 4).map((index) => (
               <div key={index.symbol}>
                 <div className="mb-2 flex justify-between text-sm">
                   <span className="text-muted">{index.name}</span>
@@ -71,28 +97,47 @@ export default function DashboardPage() {
         <Card>
           <CardHeader>
             <CardTitle>Market-Moving News</CardTitle>
+            <span className="text-[10px] uppercase tracking-wider text-muted">GDELT / NewsAPI</span>
           </CardHeader>
           <CardContent className="p-0">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Symbol</TableHead>
-                  <TableHead>Headline</TableHead>
-                  <TableHead className="text-right">Sentiment</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {newsItems.map((item) => (
-                  <TableRow key={item.id}>
-                    <TableCell className="font-semibold text-primary">{item.symbol}</TableCell>
-                    <TableCell>{item.title}</TableCell>
-                    <TableCell className={`text-right font-semibold ${getChangeClass(item.sentiment)}`}>
-                      {formatPercent(item.sentiment * 100)}
-                    </TableCell>
+            <div className="scrollbar-thin max-h-80 overflow-y-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Symbol</TableHead>
+                    <TableHead>Headline</TableHead>
+                    <TableHead className="text-right">Sentiment</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {news.slice(0, 12).map((item) => (
+                    <TableRow key={item.id}>
+                      <TableCell className="font-semibold text-primary">{item.symbol}</TableCell>
+                      <TableCell>
+                        <a href={item.url} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                          {item.title}
+                        </a>
+                      </TableCell>
+                      <TableCell className={`text-right font-semibold ${getChangeClass(item.sentiment)}`}>
+                        {item.sentiment ? formatPercent(item.sentiment * 100) : "--"}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="mt-5">
+        <Card>
+          <CardHeader>
+            <CardTitle>Data Feed Status</CardTitle>
+            <span className="text-[10px] uppercase tracking-wider text-muted">Live sources vs. key-required</span>
+          </CardHeader>
+          <CardContent className="p-3">
+            <DataFeedStatus />
           </CardContent>
         </Card>
       </div>
