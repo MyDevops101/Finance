@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quiver Quantitative | Market Intelligence</title>
+    <meta
+      name="description"
+      content="Quiver Quantitative market intelligence dashboard for public filings, macro data, alternative data, screeners, research, and portfolio risk."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <a class="brand" href="#dashboard" aria-label="Quiver Quantitative home" data-section-link="dashboard">
+          <span class="brand-mark">Q</span>
+          <span>
+            <strong>Quiver</strong>
+            <small>Quantitative</small>
+          </span>
+        </a>
+
+        <nav class="nav-list">
+          <a href="#dashboard" class="is-active" data-section-link="dashboard">Dashboard</a>
+          <a href="#screener" data-section-link="screener">Screener</a>
+          <a href="#signals" data-section-link="signals">Signals</a>
+          <a href="#research" data-section-link="research">Research</a>
+          <a href="#portfolio" data-section-link="portfolio">Portfolio</a>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="eyebrow">Coverage</span>
+          <strong>18k+ securities</strong>
+          <p>Public filings, macro events, market data, news sentiment, and portfolio analytics in one workflow.</p>
+        </div>
+      </aside>
+
+      <div class="main">
+        <header class="topbar">
+          <button class="menu-button" type="button" aria-label="Toggle navigation" data-menu-toggle>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div class="ticker" aria-label="Market ticker">
+            <span><strong>SPY</strong> 6,128.34 <b class="up">+0.53%</b></span>
+            <span><strong>QQQ</strong> 20,744.09 <b class="up">+0.95%</b></span>
+            <span><strong>IWM</strong> 2,264.88 <b class="down">-0.50%</b></span>
+            <span><strong>BTC</strong> 117,842.20 <b class="up">+1.65%</b></span>
+            <span><strong>VIX</strong> 13.62 <b class="down">-2.01%</b></span>
+          </div>
+
+          <a class="topbar-action" href="#research" data-section-link="research">Run strategy</a>
+        </header>
+
+        <main>
+          <section id="dashboard" class="section is-visible" data-section="dashboard">
+            <div class="section-heading">
+              <span class="eyebrow">Command center</span>
+              <h1>Quiver Quantitative</h1>
+              <p>
+                Institutional-grade public market intelligence for investors, traders, analysts, and researchers.
+              </p>
+            </div>
+
+            <div class="metric-grid" aria-label="Platform statistics">
+              <article class="metric">
+                <span>Signals tracked</span>
+                <strong>4.8M</strong>
+              </article>
+              <article class="metric">
+                <span>Public filings parsed</span>
+                <strong>1.2M</strong>
+              </article>
+              <article class="metric">
+                <span>Median API latency</span>
+                <strong>142ms</strong>
+              </article>
+              <article class="metric">
+                <span>Coverage universe</span>
+                <strong>18k+</strong>
+              </article>
+            </div>
+
+            <div class="dashboard-grid">
+              <article class="panel market-panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Live market intelligence</span>
+                    <h2>Major markets</h2>
+                  </div>
+                  <span class="status-pill">Live sample</span>
+                </div>
+                <div class="index-grid" id="indexGrid"></div>
+              </article>
+
+              <article class="panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Sector flow</span>
+                    <h2>One-day heatmap</h2>
+                  </div>
+                </div>
+                <div class="heatmap" id="sectorHeatmap"></div>
+              </article>
+            </div>
+
+            <div class="dashboard-grid lower">
+              <article class="panel chart-panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Macro regime</span>
+                    <h2>10Y yield and core CPI</h2>
+                  </div>
+                </div>
+                <svg class="line-chart" viewBox="0 0 720 260" role="img" aria-label="Macro trend line chart">
+                  <defs>
+                    <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#4dd4ac" stop-opacity="0.3" />
+                      <stop offset="100%" stop-color="#4dd4ac" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    class="chart-fill"
+                    d="M40,118 L148,104 L256,110 L364,132 L472,142 L580,154 L680,166 L680,220 L40,220 Z"
+                  ></path>
+                  <path class="chart-line primary-line" d="M40,118 L148,104 L256,110 L364,132 L472,142 L580,154 L680,166"></path>
+                  <path class="chart-line secondary-line" d="M40,172 L148,176 L256,184 L364,194 L472,202 L580,208 L680,212"></path>
+                  <g class="chart-labels">
+                    <text x="40" y="242">Jan</text>
+                    <text x="148" y="242">Feb</text>
+                    <text x="256" y="242">Mar</text>
+                    <text x="364" y="242">Apr</text>
+                    <text x="472" y="242">May</text>
+                    <text x="580" y="242">Jun</text>
+                    <text x="680" y="242">Jul</text>
+                  </g>
+                </svg>
+                <div class="legend">
+                  <span><i class="legend-dot primary"></i>10Y yield</span>
+                  <span><i class="legend-dot secondary"></i>Core CPI</span>
+                </div>
+              </article>
+
+              <article class="panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Market-moving news</span>
+                    <h2>Sentiment feed</h2>
+                  </div>
+                </div>
+                <div class="news-list" id="newsList"></div>
+              </article>
+            </div>
+          </section>
+
+          <section id="screener" class="section" data-section="screener">
+            <div class="section-heading">
+              <span class="eyebrow">Equity research</span>
+              <h1>Stock screener</h1>
+              <p>Filter by sector, search the universe, and isolate names with stronger quant and sentiment signals.</p>
+            </div>
+
+            <div class="toolbar panel">
+              <label>
+                Search
+                <input id="searchInput" type="search" placeholder="Symbol or company" />
+              </label>
+              <label>
+                Sector
+                <select id="sectorSelect">
+                  <option value="All">All sectors</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Consumer">Consumer</option>
+                  <option value="Financials">Financials</option>
+                  <option value="Health Care">Health Care</option>
+                  <option value="Energy">Energy</option>
+                </select>
+              </label>
+              <label>
+                Min score <output id="scoreOutput">70</output>
+                <input id="scoreRange" type="range" min="0" max="100" value="70" />
+              </label>
+              <button class="button" type="button" id="resetFilters">Reset</button>
+            </div>
+
+            <article class="panel table-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">Ranked universe</span>
+                  <h2>Screen results</h2>
+                </div>
+                <span class="status-pill" id="resultCount">0 matches</span>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Symbol</th>
+                      <th>Company</th>
+                      <th>Sector</th>
+                      <th>Price</th>
+                      <th>Change</th>
+                      <th>Quant</th>
+                      <th>Sentiment</th>
+                    </tr>
+                  </thead>
+                  <tbody id="screenerRows"></tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <section id="signals" class="section" data-section="signals">
+            <div class="section-heading">
+              <span class="eyebrow">Alternative data</span>
+              <h1>Signal feeds</h1>
+              <p>Track insider clusters, congressional disclosures, macro releases, crypto moves, and AI-ranked risk signals.</p>
+            </div>
+
+            <div class="signal-grid">
+              <article class="panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">SEC Form 4</span>
+                    <h2>Insider activity</h2>
+                  </div>
+                </div>
+                <div class="compact-list" id="insiderList"></div>
+              </article>
+
+              <article class="panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Public disclosures</span>
+                    <h2>Congressional trades</h2>
+                  </div>
+                </div>
+                <div class="compact-list" id="congressList"></div>
+              </article>
+
+              <article class="panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Macro calendar</span>
+                    <h2>Upcoming events</h2>
+                  </div>
+                </div>
+                <div class="compact-list" id="eventList"></div>
+              </article>
+            </div>
+          </section>
+
+          <section id="research" class="section" data-section="research">
+            <div class="section-heading">
+              <span class="eyebrow">Quant research</span>
+              <h1>Research lab</h1>
+              <p>Model momentum, quality, RSI, MACD, and risk-adjusted strategies before taking a signal further.</p>
+            </div>
+
+            <div class="research-layout">
+              <article class="panel control-panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Strategy builder</span>
+                    <h2>Backtest setup</h2>
+                  </div>
+                </div>
+                <label>
+                  Signal family
+                  <select id="strategySelect">
+                    <option value="momentum">Momentum + quality</option>
+                    <option value="filings">Insider accumulation</option>
+                    <option value="macro">Macro rotation</option>
+                  </select>
+                </label>
+                <label>
+                  Risk budget <output id="riskOutput">45</output>
+                  <input id="riskRange" type="range" min="10" max="90" value="45" />
+                </label>
+                <button class="button wide" type="button" id="runBacktest">Run backtest</button>
+              </article>
+
+              <article class="panel">
+                <div class="metric-strip" id="backtestMetrics"></div>
+                <svg class="line-chart backtest-chart" viewBox="0 0 720 280" role="img" aria-label="Backtest equity curve">
+                  <path class="chart-line primary-line" id="strategyLine" d=""></path>
+                  <path class="chart-line secondary-line" id="benchmarkLine" d=""></path>
+                  <g class="chart-labels">
+                    <text x="40" y="258">Aug</text>
+                    <text x="198" y="258">Nov</text>
+                    <text x="356" y="258">Feb</text>
+                    <text x="514" y="258">May</text>
+                    <text x="670" y="258">Jul</text>
+                  </g>
+                </svg>
+                <div class="legend">
+                  <span><i class="legend-dot primary"></i>Strategy</span>
+                  <span><i class="legend-dot secondary"></i>Benchmark</span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section id="portfolio" class="section" data-section="portfolio">
+            <div class="section-heading">
+              <span class="eyebrow">Portfolio risk</span>
+              <h1>Holdings workspace</h1>
+              <p>Monitor allocation, unrealized profit and loss, day moves, beta, and concentration risk.</p>
+            </div>
+
+            <div class="portfolio-grid">
+              <article class="panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Current book</span>
+                    <h2>Portfolio summary</h2>
+                  </div>
+                </div>
+                <div class="metric-strip portfolio-metrics" id="portfolioMetrics"></div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                        <th>Sector</th>
+                        <th>Value</th>
+                        <th>P/L</th>
+                        <th>Beta</th>
+                      </tr>
+                    </thead>
+                    <tbody id="portfolioRows"></tbody>
+                  </table>
+                </div>
+              </article>
+
+              <article class="panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Exposure</span>
+                    <h2>Allocation</h2>
+                  </div>
+                </div>
+                <div class="allocation-list" id="allocationList"></div>
+              </article>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
